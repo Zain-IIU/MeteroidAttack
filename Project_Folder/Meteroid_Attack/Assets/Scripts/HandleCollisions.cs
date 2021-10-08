@@ -23,19 +23,18 @@ public class HandleCollisions : MonoBehaviour
             {
                 Destroy(collision.gameObject);
                 Destroy(this.gameObject);
+                Instantiate(VFXPrefab, transform.position, Quaternion.identity);
             }
             else if(!isMeteor)
             {
                 Destroy(this.gameObject);
+                Instantiate(VFXPrefab, transform.position, Quaternion.identity);
             }
             
-          
-            
+
+
         }
     }
 
-    private void OnDestroy()
-    {
-        Instantiate(VFXPrefab, transform.position, Quaternion.identity);
-    }
+  
 }

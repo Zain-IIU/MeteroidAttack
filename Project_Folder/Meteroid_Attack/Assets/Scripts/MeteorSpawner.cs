@@ -12,6 +12,8 @@ public class MeteorSpawner : MonoBehaviour
 
     [SerializeField]
     Transform[] spawnPoints;
+
+
     // Start is called before the first frame update
     void Start()
     {

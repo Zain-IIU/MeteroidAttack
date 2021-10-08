@@ -20,4 +20,13 @@ public class MeteorFall : MonoBehaviour
     {
         transform.Translate(Vector2.down * fallSpeed*Time.deltaTime);
     }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("DeadZone"))
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }

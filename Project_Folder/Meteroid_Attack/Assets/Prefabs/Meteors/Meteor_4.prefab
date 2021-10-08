@@ -246,7 +246,7 @@ MonoBehaviour:
   Tag: FireBall
   VFXPrefab: {fileID: 6632290818972600273, guid: ecfdc3935cd7dbe4e8065d9718c1527b, type: 3}
   isMeteor: 1
-  ID: 2
+  ID: 3
 --- !u!114 &8736826797389588645
 MonoBehaviour:
   m_ObjectHideFlags: 0

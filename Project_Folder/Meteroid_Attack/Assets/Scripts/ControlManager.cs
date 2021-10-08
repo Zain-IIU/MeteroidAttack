@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using DG.Tweening;
 
+using UnityEngine.SceneManagement;
 public class ControlManager : MonoBehaviour
 {
     [SerializeField]
@@ -22,14 +23,23 @@ public class ControlManager : MonoBehaviour
     float easingTime;
     [SerializeField]
     Ease EaseType;
-
+    [SerializeField]
+    RectTransform controlButton;
     
     public void ShootMeteor()
     {
-        Debug.Log(EventSystem.current.currentSelectedGameObject.name);
-
+       
         if(Player && raycastPoint)
         {
+            controlButton = EventSystem.current.currentSelectedGameObject.GetComponent<RectTransform>();
+            controlButton.DOScale(Vector2.zero, 0.09f).SetEase(EaseType).OnComplete(() =>
+            {
+                controlButton.DOScale(Vector2.one, 0.09f).SetEase(EaseType);
+
+            });
+                 
+
+                 
             Collider2D[] nearbyObjects = Physics2D.OverlapCircleAll(raycastPoint.position, 20f, enemyLayer);
             if (nearbyObjects != null)
             {
@@ -38,7 +48,7 @@ public class ControlManager : MonoBehaviour
                 {
                     Player.DOMoveX(closeOne.transform.position.x, easingTime).SetEase(EaseType).OnComplete(() =>
                     {
-                        Player.DOMove(new Vector3(0, -1.5f), 1.5f);
+                        Player.DOMove(new Vector3(0, -1.5f), 0.75f);
                         GameObject Fire = Instantiate(projectile, projectilePoint.position, Quaternion.Euler(0,0,90f));
                         Fire.GetComponent<Projectile>().SetID(int.Parse(EventSystem.current.currentSelectedGameObject.name));
                     });
@@ -66,5 +76,10 @@ public class ControlManager : MonoBehaviour
         }
 
         return nearestObject;
+    }
+
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene("GamePlay");
     }
 }
