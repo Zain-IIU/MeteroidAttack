@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.EventSystems;
 using DG.Tweening;
 
 public class ControlManager : MonoBehaviour
@@ -26,18 +26,27 @@ public class ControlManager : MonoBehaviour
     
     public void ShootMeteor()
     {
-        Collider2D[] nearbyObjects = Physics2D.OverlapCircleAll(raycastPoint.position, 20f, enemyLayer);
-        if (nearbyObjects!=null)
+        Debug.Log(EventSystem.current.currentSelectedGameObject.name);
+
+        if(Player && raycastPoint)
         {
-            GameObject closeOne = GetNearestObject(Player.gameObject, nearbyObjects);
-            Debug.Log("Close one is " + closeOne.name);
-            Player.DOMoveX(closeOne.transform.position.x, easingTime).SetEase(EaseType).OnComplete(() =>
+            Collider2D[] nearbyObjects = Physics2D.OverlapCircleAll(raycastPoint.position, 20f, enemyLayer);
+            if (nearbyObjects != null)
             {
-                Player.DOMove(new Vector3(0, -1.5f), 1.5f);
+                GameObject closeOne = GetNearestObject(Player.gameObject, nearbyObjects);
+                if(closeOne)
+                {
+                    Player.DOMoveX(closeOne.transform.position.x, easingTime).SetEase(EaseType).OnComplete(() =>
+                    {
+                        Player.DOMove(new Vector3(0, -1.5f), 1.5f);
+                        GameObject Fire = Instantiate(projectile, projectilePoint.position, Quaternion.Euler(0,0,90f));
+                        Fire.GetComponent<Projectile>().SetID(int.Parse(EventSystem.current.currentSelectedGameObject.name));
+                    });
+                }
+               
 
-            });
-
-        }
+            }
+        }  
     }
 
     GameObject GetNearestObject(GameObject sourceObject, Collider2D[] nearbyObjects)

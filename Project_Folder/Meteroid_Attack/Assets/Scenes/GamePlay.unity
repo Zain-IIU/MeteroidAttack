@@ -778,7 +778,7 @@ GameObject:
   m_Component:
   - component: {fileID: 782830698}
   m_Layer: 5
-  m_Name: Box_1
+  m_Name: Box_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1131,7 +1131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 903835520}
   m_Layer: 5
-  m_Name: Box_4
+  m_Name: Box_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1203,12 +1203,12 @@ MonoBehaviour:
   Player: {fileID: 1067679568}
   raycastPoint: {fileID: 723573862}
   projectilePoint: {fileID: 537240582}
-  projectile: {fileID: 367214109}
+  projectile: {fileID: 786123248343366036, guid: ce3586b33176adf429f47bf14701d200, type: 3}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
-  easingTime: 0.52
-  EaseType: 2
+  easingTime: 0.45
+  EaseType: 1
 --- !u!1 &966367270
 GameObject:
   m_ObjectHideFlags: 0
@@ -1450,7 +1450,7 @@ GameObject:
   - component: {fileID: 1020823625}
   - component: {fileID: 1020823627}
   m_Layer: 5
-  m_Name: Attack1
+  m_Name: 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1582,7 +1582,7 @@ GameObject:
   - component: {fileID: 1041940670}
   - component: {fileID: 1041940672}
   m_Layer: 5
-  m_Name: Attack3
+  m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1866,7 +1866,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1912,9 +1912,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1067679566}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9c198f336ad46b4aaff883f4cb424a9, type: 3}
+  m_Script: {fileID: 11500000, guid: d98fceca3dc1df24dbf3c0ef49466aa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Tag: Meteor
+  VFXPrefab: {fileID: 6632290818972600273, guid: ecfdc3935cd7dbe4e8065d9718c1527b, type: 3}
 --- !u!1 &1113696924
 GameObject:
   m_ObjectHideFlags: 0
@@ -1958,7 +1960,7 @@ GameObject:
   - component: {fileID: 1207178287}
   - component: {fileID: 1207178289}
   m_Layer: 5
-  m_Name: Attack4
+  m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2122,7 +2124,7 @@ GameObject:
   - component: {fileID: 1297739146}
   - component: {fileID: 1297739148}
   m_Layer: 5
-  m_Name: Attack2
+  m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
