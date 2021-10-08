@@ -4,15 +4,30 @@ using UnityEngine;
 
 public class Mover : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    float moveSpeed;
+
+    [SerializeField]
+    float speedIncrement;
+    [SerializeField]
+    float timetoIncreaseSpeed;
+
+    [SerializeField]
+    float maxSpeedtoAttain;
+    private void Start()
     {
-        Debug.Log(Screen.width + "     " + Screen.height);
+        InvokeRepeating(nameof(IncrementSpeed),2f,timetoIncreaseSpeed);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        transform.Translate(Vector2.up * moveSpeed * Time.deltaTime);
+    }
+
+    void IncrementSpeed()
+    {
+        if(moveSpeed<maxSpeedtoAttain)
+            moveSpeed += speedIncrement * Time.deltaTime;
     }
 }

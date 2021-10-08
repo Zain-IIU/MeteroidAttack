@@ -34,7 +34,7 @@ public class ControlManager : MonoBehaviour
             controlButton = EventSystem.current.currentSelectedGameObject.GetComponent<RectTransform>();
             controlButton.DOScale(Vector2.zero, 0.09f).SetEase(EaseType).OnComplete(() =>
             {
-                controlButton.DOScale(Vector2.one, 0.09f).SetEase(EaseType);
+                controlButton.DOScale(new Vector2(0.8f,0.8f), 0.09f).SetEase(EaseType);
 
             });
                  
@@ -48,8 +48,8 @@ public class ControlManager : MonoBehaviour
                 {
                     Player.DOMoveX(closeOne.transform.position.x, easingTime).SetEase(EaseType).OnComplete(() =>
                     {
-                        Player.DOMove(new Vector3(0, -1.5f), 0.75f);
-                        GameObject Fire = Instantiate(projectile, projectilePoint.position, Quaternion.Euler(0,0,90f));
+                        Player.DOMoveX(0, 0.75f);
+                        GameObject Fire = Instantiate(projectile, projectilePoint.position,Quaternion.identity);
                         Fire.GetComponent<Projectile>().SetID(int.Parse(EventSystem.current.currentSelectedGameObject.name));
                     });
                 }

@@ -19,11 +19,19 @@ public class HandleCollisions : MonoBehaviour
     {
         if(collision.gameObject.CompareTag(Tag))
         {
-            if(isMeteor && collision.GetComponent<Projectile>().GetID()==ID)
+            if(isMeteor)
             {
-                Destroy(collision.gameObject);
-                Destroy(this.gameObject);
-                Instantiate(VFXPrefab, transform.position, Quaternion.identity);
+                if(collision.GetComponent<Projectile>().GetID() == ID)
+                {
+                    Destroy(collision.gameObject);
+                    Destroy(this.gameObject);
+                    Instantiate(VFXPrefab, transform.position, Quaternion.identity);
+                }
+                else
+                {
+                    Debug.Log("Game Over");
+                }
+               
             }
             else if(!isMeteor)
             {

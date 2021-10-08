@@ -9,16 +9,16 @@ public class Projectile : MonoBehaviour
     [SerializeField]
     float upwardThrust;
 
-    Rigidbody2D rb;
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
+  
     private void Start()
     {
-        rb.AddForce(Vector2.up * upwardThrust);
+        Destroy(this.gameObject,2f);
     }
 
+    private void Update()
+    {
+        transform.Translate(Vector2.up * upwardThrust * Time.deltaTime);
+    }
     public void SetID(int newID) => ID = newID;
 
     public int GetID()
