@@ -24,17 +24,19 @@ public class HandleCollisions : MonoBehaviour
                 if(collision.GetComponent<Projectile>().GetID() == ID)
                 {
 
-                    Destroy(collision.gameObject);
+                    
                     Destroy(this.gameObject);
                     ScoreManager.instance.IncrementScore();
-                    Instantiate(VFXPrefab, transform.position, Quaternion.identity);
                 }
                 else
                 {
                     UIManager.instance.EnableRestartButton();
                     GameManager.instance.StopAllOperaions();
+                    
                 }
-               
+                Destroy(collision.gameObject);
+                Instantiate(VFXPrefab, transform.position, Quaternion.identity);
+
             }
             else if(!isMeteor)
             {

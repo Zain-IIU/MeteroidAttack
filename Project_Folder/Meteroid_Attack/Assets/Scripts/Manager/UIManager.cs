@@ -5,10 +5,11 @@ using DG.Tweening;
 
 using UnityEngine.UI;
 
+using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
-
+    [Header("Main Menu")]
     [SerializeField]
     RectTransform mainmenuBG;
     [SerializeField]
@@ -17,13 +18,21 @@ public class UIManager : MonoBehaviour
     Transform mainmenuPlanet;
     [SerializeField]
     RectTransform playButton;
+
+    [Header("In Game")]
     [SerializeField]
     RectTransform restartButton;
     [SerializeField]
     RectTransform controlMenu;
+    [SerializeField]
+    GameObject loadingBar;
 
     public bool gameStarted;
 
+
+    public  bool OnMainMenu=true;
+    [SerializeField]
+    string sceneName;
     private void Awake()
     {
         instance = this;
@@ -31,22 +40,32 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        mainmenuLogo.DOScale(Vector2.one, 0.4f);
-        mainmenuPlanet.DOScale(Vector2.one, 0.4f);
-        playButton.DOScale(Vector2.one, 0.45f);
+        if(OnMainMenu)
+        {
+            mainmenuLogo.DOScale(Vector2.one, 0.4f);
+            mainmenuPlanet.DOScale(Vector2.one, 0.4f);
+            playButton.DOScale(Vector2.one, 0.45f);
+        }
+
+        else
+        {
+            controlMenu.DOScale(Vector2.one, 0.35f);
+        }
     }
 
     public void OnPressPlay()
     {
         mainmenuLogo.GetComponent<Animator>().enabled = false;
+        loadingBar.SetActive(true);
         playButton.DOAnchorPos(new Vector3(0, 850, 0), 0.75f).OnComplete(() =>
         {
             mainmenuLogo.DOScale(Vector2.zero, 0.25f);
             mainmenuPlanet.DOScale(Vector2.zero, 0.25f);
             mainmenuBG.DOAnchorPos(new Vector3(0, -10000, 0), 0.25f);
+            
             gameStarted = true;
-            GameManager.instance.StartGame();
-            controlMenu.DOScale(Vector2.one, 0.35f);
+
+            SceneManager.LoadScene(sceneName);
         });
         playButton.DOScale(Vector2.zero, 0.75f);
         

@@ -33,11 +33,7 @@ public class AudioManager : MonoBehaviour
    
    	public void Play (string sound)
    	{	
-   		/*if(MenuManager.instance.mute) {
-   			return;
-   		}*/
    		
-   		 
    		Sound s = Array.Find(sounds, item => item.name == sound);
    		
    		s.source.Play();
