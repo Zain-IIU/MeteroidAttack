@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -10,6 +11,8 @@ public class GameManager : MonoBehaviour
     Mover player;
     [SerializeField]
     MeteorSpawner Spawner;
+    [SerializeField]
+    string sceneName;
     private void Awake()
     {
         instance = this;
@@ -20,11 +23,23 @@ public class GameManager : MonoBehaviour
     {
         player.enabled = false;
         Spawner.enabled = false;
+        Spawner.gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void StartGame()
     {
-        
+        player.enabled = true;
+        Spawner.enabled = true ;
+        Spawner.gameObject.SetActive(true);
+    }
+    
+    public void StopAllOperaions()
+    {
+        player.enabled = false;
+        Spawner.StopSpawning();
+    }
+     public void RestartGame()
+    {
+        SceneManager.LoadScene(sceneName);  
     }
 }

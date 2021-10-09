@@ -31,7 +31,8 @@ public class HandleCollisions : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("Game Over");
+                    UIManager.instance.EnableRestartButton();
+                    GameManager.instance.StopAllOperaions();
                 }
                
             }

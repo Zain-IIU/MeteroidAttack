@@ -15,21 +15,49 @@ public class UIManager : MonoBehaviour
     RectTransform mainmenuLogo;
     [SerializeField]
     Transform mainmenuPlanet;
-
+    [SerializeField]
+    RectTransform playButton;
+    [SerializeField]
+    RectTransform restartButton;
+    
     public bool gameStarted;
+
     private void Awake()
     {
         instance = this;
     }
-    // Start is called before the first frame update
-    void Start()
+
+    private void Start()
     {
-        
+        mainmenuLogo.DOScale(Vector2.one, 0.4f);
+        mainmenuPlanet.DOScale(Vector2.one, 0.4f);
+        playButton.DOScale(Vector2.one, 0.45f);
+    }
+    public void OnPressPlay()
+    {
+        mainmenuLogo.GetComponent<Animator>().enabled = false;
+        playButton.DOAnchorPos(new Vector3(0, 850, 0), 0.75f).OnComplete(() =>
+        {
+            mainmenuLogo.DOScale(Vector2.zero, 0.25f);
+            mainmenuPlanet.DOScale(Vector2.zero, 0.25f);
+            mainmenuBG.DOAnchorPos(new Vector3(0, -10000, 0), 0.25f);
+            gameStarted = true;
+            GameManager.instance.StartGame();
+        });
+        playButton.DOScale(Vector2.zero, 0.75f);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void EnableRestartButton()
     {
-        
+        restartButton.DOScale(Vector2.one, 0.25f);
+    }
+    public void OnPressRestart()
+    {
+        restartButton.DOScale(Vector2.zero, 0.09f).OnComplete(() =>
+        {
+            restartButton.DOScale(new Vector2(0.8f, 0.8f), 0.09f);
+            GameManager.instance.RestartGame();
+
+        });
     }
 }
