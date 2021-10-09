@@ -50,6 +50,7 @@ public class ControlManager : MonoBehaviour
                     {
                         Player.DOMoveX(0, 0.75f);
                         GameObject Fire = Instantiate(projectile, projectilePoint.position,Quaternion.identity);
+                        AudioManager.instance.Play("Shoot");
                         Fire.GetComponent<Projectile>().SetID(int.Parse(EventSystem.current.currentSelectedGameObject.name));
                     });
                 }

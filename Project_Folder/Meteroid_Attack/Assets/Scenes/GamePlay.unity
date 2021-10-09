@@ -1108,11 +1108,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
+  - name: Shoot
+    clip: {fileID: 8300000, guid: e30d3d3948e8e864e998a04aa7c44dbe, type: 3}
+    volume: 1
+    pitch: 1
     loop: 0
+    source: {fileID: 0}
+  - name: Meteor Explode
+    clip: {fileID: 8300000, guid: ccc6d50ff686c4a499b3722f8a6a578c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Negative
+    clip: {fileID: 8300000, guid: d52bb67be88ba1a4b82996f5c5ed3c00, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Score SFX
+    clip: {fileID: 8300000, guid: fdffbc4329b117c4daad0cc88b681832, type: 3}
+    volume: 0.865
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Ship Explode
+    clip: {fileID: 8300000, guid: a544bc1788af22c479194dc6f8035921, type: 3}
+    volume: 0.865
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Button Press
+    clip: {fileID: 8300000, guid: fd47f0d4af9d5e0429b698b71a254416, type: 3}
+    volume: 0.865
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Space
+    clip: {fileID: 8300000, guid: 450721fd6af90cb4aafb33b66985347c, type: 3}
+    volume: 0.865
+    pitch: 1
+    loop: 1
     source: {fileID: 0}
   sound:
     name: 
@@ -2683,11 +2719,11 @@ RectTransform:
   m_Father: {fileID: 488489921}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMin: {x: 0.554, y: 0.92046195}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 127.76471, y: -10}
-  m_SizeDelta: {x: -268.8855, y: 54.5928}
-  m_Pivot: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -0.000030518, y: 0.000045776}
+  m_Pivot: {x: 1, y: 1}
 --- !u!1 &1067679566
 GameObject:
   m_ObjectHideFlags: 0
@@ -3344,6 +3380,7 @@ MonoBehaviour:
   playButton: {fileID: 0}
   restartButton: {fileID: 249932788}
   controlMenu: {fileID: 993823368}
+  loadingBar: {fileID: 0}
   gameStarted: 0
   OnMainMenu: 0
   sceneName: 

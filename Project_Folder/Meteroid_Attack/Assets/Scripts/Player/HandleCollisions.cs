@@ -27,9 +27,11 @@ public class HandleCollisions : MonoBehaviour
                     
                     Destroy(this.gameObject);
                     ScoreManager.instance.IncrementScore();
+                    AudioManager.instance.Play("Meteor Explode");
                 }
                 else
                 {
+                    AudioManager.instance.Play("Negative");
                     UIManager.instance.EnableRestartButton();
                     GameManager.instance.StopAllOperaions();
                     
@@ -40,6 +42,8 @@ public class HandleCollisions : MonoBehaviour
             }
             else if(!isMeteor)
             {
+                AudioManager.instance.Play("Negative");
+                AudioManager.instance.Play("Ship Explode");
                 Destroy(this.gameObject);
                 UIManager.instance.EnableRestartButton();
                 GameManager.instance.StopAllOperaions();

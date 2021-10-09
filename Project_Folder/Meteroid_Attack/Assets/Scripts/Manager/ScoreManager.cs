@@ -29,14 +29,9 @@ public class ScoreManager : MonoBehaviour
         scoreText.text = curScore.ToString();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void IncrementScore()
     {
+        AudioManager.instance.Play("Score SFX");
         curScore += increaseinScore;
         scoreObject.transform.DOScale(new Vector2(1.25f, 1.25f), 0.25f).OnComplete(() =>
         {

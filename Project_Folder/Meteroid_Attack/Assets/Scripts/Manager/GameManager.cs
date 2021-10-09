@@ -18,7 +18,10 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
-   
+    private void Start()
+    {
+        AudioManager.instance.Play("Space");
+    }
     public void StartGame()
     {
         player.enabled = true;
