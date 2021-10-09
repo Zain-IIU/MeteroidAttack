@@ -39,6 +39,8 @@ public class HandleCollisions : MonoBehaviour
             else if(!isMeteor)
             {
                 Destroy(this.gameObject);
+                UIManager.instance.EnableRestartButton();
+                GameManager.instance.StopAllOperaions();
                 Instantiate(VFXPrefab, transform.position, Quaternion.identity);
             }
             

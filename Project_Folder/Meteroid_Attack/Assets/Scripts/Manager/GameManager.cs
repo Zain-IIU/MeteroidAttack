@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
     
     public void StopAllOperaions()
     {
+        if(player)
         player.enabled = false;
         Spawner.StopSpawning();
     }

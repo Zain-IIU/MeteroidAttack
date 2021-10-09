@@ -19,7 +19,9 @@ public class UIManager : MonoBehaviour
     RectTransform playButton;
     [SerializeField]
     RectTransform restartButton;
-    
+    [SerializeField]
+    RectTransform controlMenu;
+
     public bool gameStarted;
 
     private void Awake()
@@ -33,6 +35,7 @@ public class UIManager : MonoBehaviour
         mainmenuPlanet.DOScale(Vector2.one, 0.4f);
         playButton.DOScale(Vector2.one, 0.45f);
     }
+
     public void OnPressPlay()
     {
         mainmenuLogo.GetComponent<Animator>().enabled = false;
@@ -43,13 +46,18 @@ public class UIManager : MonoBehaviour
             mainmenuBG.DOAnchorPos(new Vector3(0, -10000, 0), 0.25f);
             gameStarted = true;
             GameManager.instance.StartGame();
+            controlMenu.DOScale(Vector2.one, 0.35f);
         });
         playButton.DOScale(Vector2.zero, 0.75f);
+        
     }
+
+
 
     public void EnableRestartButton()
     {
         restartButton.DOScale(Vector2.one, 0.25f);
+        controlMenu.DOScale(Vector2.zero, 0.25f);
     }
     public void OnPressRestart()
     {
