@@ -6,7 +6,10 @@ public class Mover : MonoBehaviour
 {
     [SerializeField]
     float moveSpeed;
-
+    [SerializeField]
+    Sprite[] ships;
+    [SerializeField]
+    SpriteRenderer Renderer;
     [SerializeField]
     float speedIncrement;
     [SerializeField]
@@ -16,6 +19,8 @@ public class Mover : MonoBehaviour
     float maxSpeedtoAttain;
     private void Start()
     {
+        Renderer = GetComponent<SpriteRenderer>();
+        Renderer.sprite = ships[PlayerPrefs.GetInt("ShipIndex")];
         InvokeRepeating(nameof(IncrementSpeed),2f,timetoIncreaseSpeed);
     }
 

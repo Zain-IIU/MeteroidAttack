@@ -16,8 +16,8 @@ public class UIManager : MonoBehaviour
     RectTransform mainmenuLogo;
     [SerializeField]
     Transform mainmenuPlanet;
-    [SerializeField]
-    RectTransform playButton;
+    
+    public RectTransform[] playButton;
     [SerializeField]
     GameObject loadingBar;
 
@@ -47,7 +47,8 @@ public class UIManager : MonoBehaviour
             AudioManager.instance.Play("Space");
             mainmenuLogo.DOScale(Vector2.one, 0.4f);
             mainmenuPlanet.DOScale(Vector2.one, 0.4f);
-            playButton.DOScale(Vector2.one, 0.45f);
+
+            playButton[ShipManager.instance.shipIndex].DOScale(Vector2.one, 0.45f);
         }
 
         else
@@ -58,10 +59,11 @@ public class UIManager : MonoBehaviour
 
     public void OnPressPlay()
     {
+        PlayerPrefs.SetInt("ShipIndex", ShipManager.instance.shipIndex);
         AudioManager.instance.Play("Initialize");
         mainmenuLogo.GetComponent<Animator>().enabled = false;
         loadingBar.SetActive(true);
-        playButton.DOAnchorPos(new Vector3(0, 850, 0), 0.75f).OnComplete(() =>
+        playButton[ShipManager.instance.shipIndex].DOMoveY(100,0.75f).OnComplete(() =>
         {
             mainmenuLogo.DOScale(Vector2.zero, 0.25f);
             mainmenuPlanet.DOScale(Vector2.zero, 0.25f);
@@ -71,12 +73,15 @@ public class UIManager : MonoBehaviour
 
             SceneManager.LoadScene(sceneName);
         });
-        playButton.DOScale(Vector2.zero, 0.75f);
+        playButton[ShipManager.instance.shipIndex].DOScale(Vector2.zero, 0.75f);
         
     }
 
-
-
+    public void TweenPlayButton()
+    {
+        Debug.Log(ShipManager.instance.shipIndex );
+        playButton[ShipManager.instance.shipIndex ].DOScale(Vector2.one, 0.45f);
+    }
     public void EnableRestartButton()
     {
         
