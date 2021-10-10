@@ -21,7 +21,8 @@ public class HandleCollisions : MonoBehaviour
         {
             if(isMeteor)
             {
-                if(collision.GetComponent<Projectile>().GetID() == ID)
+               
+                if (collision.GetComponent<Projectile>().GetID() == ID)
                 {
 
                     
@@ -37,7 +38,7 @@ public class HandleCollisions : MonoBehaviour
                     
                 }
                 Destroy(collision.gameObject);
-                Instantiate(VFXPrefab, transform.position, Quaternion.identity);
+                
 
             }
             else if(!isMeteor)
@@ -47,13 +48,23 @@ public class HandleCollisions : MonoBehaviour
                 Destroy(this.gameObject);
                 UIManager.instance.EnableRestartButton();
                 GameManager.instance.StopAllOperaions();
-                Instantiate(VFXPrefab, transform.position, Quaternion.identity);
             }
-            
 
 
+            Instantiate(VFXPrefab, transform.position, Quaternion.identity);
         }
+
+        if (collision.gameObject.CompareTag("DeadZone"))
+        {
+            AudioManager.instance.Play("Negative");
+            UIManager.instance.EnableRestartButton();
+            GameManager.instance.StopAllOperaions();
+            Instantiate(VFXPrefab, transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
+        }
+
+       
     }
 
-  
+
 }

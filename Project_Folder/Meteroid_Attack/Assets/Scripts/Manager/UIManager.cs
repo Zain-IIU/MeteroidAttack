@@ -18,14 +18,15 @@ public class UIManager : MonoBehaviour
     Transform mainmenuPlanet;
     [SerializeField]
     RectTransform playButton;
+    [SerializeField]
+    GameObject loadingBar;
 
     [Header("In Game")]
     [SerializeField]
     RectTransform restartButton;
     [SerializeField]
     RectTransform controlMenu;
-    [SerializeField]
-    GameObject loadingBar;
+    
 
     public bool gameStarted;
 
@@ -33,6 +34,7 @@ public class UIManager : MonoBehaviour
     public  bool OnMainMenu=true;
     [SerializeField]
     string sceneName;
+
     private void Awake()
     {
         instance = this;

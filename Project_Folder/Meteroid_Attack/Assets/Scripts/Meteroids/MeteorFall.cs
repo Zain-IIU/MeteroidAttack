@@ -11,7 +11,7 @@ public class MeteorFall : MonoBehaviour
     [SerializeField]
     float sizeIncrementTime;
 
-    Rigidbody2D RB;
+  
 
     private void Awake()
     {
@@ -20,19 +20,8 @@ public class MeteorFall : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        RB = GetComponent<Rigidbody2D>();
         transform.DOScale(Vector2.one, sizeIncrementTime);
     }
 
-    // Update is called once per frame
-
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("DeadZone"))
-        {
-            Destroy(this.gameObject);
-        }
-    }
-
+    
 }

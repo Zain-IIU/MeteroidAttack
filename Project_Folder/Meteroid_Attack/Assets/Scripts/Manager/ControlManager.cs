@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using DG.Tweening;
 
-using UnityEngine.SceneManagement;
 public class ControlManager : MonoBehaviour
 {
     [SerializeField]
@@ -48,10 +47,10 @@ public class ControlManager : MonoBehaviour
                 {
                     Player.DOMoveX(closeOne.transform.position.x, easingTime).SetEase(EaseType).OnComplete(() =>
                     {
-                        Player.DOMoveX(0, 0.75f);
-                        GameObject Fire = Instantiate(projectile, projectilePoint.position,Quaternion.identity);
-                        AudioManager.instance.Play("Shoot");
+                        GameObject Fire = Instantiate(projectile, projectilePoint.position, Quaternion.identity);
                         Fire.GetComponent<Projectile>().SetID(int.Parse(EventSystem.current.currentSelectedGameObject.name));
+                        AudioManager.instance.Play("Shoot");
+                        Player.DOMoveX(0, easingTime).SetEase(EaseType);
                     });
                 }
                
@@ -79,8 +78,4 @@ public class ControlManager : MonoBehaviour
         return nearestObject;
     }
 
-    public void ReloadScene()
-    {
-        SceneManager.LoadScene("GamePlay");
-    }
 }
