@@ -34,10 +34,12 @@ public class ShipManager : MonoBehaviour
   
     public void ChangeShip()
     {
-        shipTransform.DOAnchorPos(new Vector2(-400*(++shipIndex), 0), tweeningTime).SetEase(easeType);
+        if (shipIndex <= totalShips - 2)
+            shipIndex++;
+        else
+            shipIndex = 0;
+        shipTransform.DOAnchorPos(new Vector2(-400 * (shipIndex), 0), tweeningTime).SetEase(easeType);
+
         UIManager.instance.TweenPlayButton();
-        if (shipIndex >=totalShips-1)
-            shipIndex = -1;
-       
     }
 }
