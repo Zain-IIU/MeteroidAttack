@@ -1676,7 +1676,7 @@ MonoBehaviour:
   - {fileID: 4374557400859871535, guid: 79ba6375c5d3a7644830043b5fb517fc, type: 3}
   spawnPoints: {fileID: 1043489644}
   Player: {fileID: 1067679566}
-  minimumSpawnTime: 0.7
+  minimumSpawnTime: 0.65
 --- !u!1 &704352005
 GameObject:
   m_ObjectHideFlags: 0
@@ -2947,7 +2947,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e288ad506fb08c8419c029eb220e45cd, type: 3}
   - {fileID: 21300000, guid: ac3e6de1da7baf64b851613480ad7253, type: 3}
   Renderer: {fileID: 0}
-  speedIncrement: 7
+  speedIncrement: 15
   timetoIncreaseSpeed: 5
   maxSpeedtoAttain: 7
 --- !u!1 &1074695976

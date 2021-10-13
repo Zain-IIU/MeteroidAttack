@@ -63,7 +63,7 @@ public class UIManager : MonoBehaviour
         AudioManager.instance.Play("Initialize");
         mainmenuLogo.GetComponent<Animator>().enabled = false;
         loadingBar.SetActive(true);
-        playButton[ShipManager.instance.shipIndex].DOMoveY(100,0.75f).OnComplete(() =>
+        playButton[ShipManager.instance.shipIndex].DOAnchorPos(new Vector3(0,650,0),0.35f).OnComplete(() =>
         {
             mainmenuLogo.DOScale(Vector2.zero, 0.25f);
             mainmenuPlanet.DOScale(Vector2.zero, 0.25f);
@@ -88,20 +88,8 @@ public class UIManager : MonoBehaviour
         restartButton.DOScale(Vector2.one, 0.25f);
         controlMenu.DOScale(Vector2.zero, 0.25f);
     }
-    public void Mute_UnMute()
-    {
-        if(AudioManager.instance.wasMuted())
-        {
-            AudioManager.instance.setAudio(false);
-            Camera.main.GetComponent<AudioListener>().enabled = true;
-        }
-        else
-        {
-            
-            Camera.main.GetComponent<AudioListener>().enabled = false;
-            AudioManager.instance.setAudio(true);
-        }
-    }
+   
+    
     public void OnPressRestart()
     {
         AudioManager.instance.Play("Button Press");
