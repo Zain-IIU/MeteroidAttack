@@ -88,6 +88,20 @@ public class UIManager : MonoBehaviour
         restartButton.DOScale(Vector2.one, 0.25f);
         controlMenu.DOScale(Vector2.zero, 0.25f);
     }
+    public void Mute_UnMute()
+    {
+        if(AudioManager.instance.wasMuted())
+        {
+            AudioManager.instance.setAudio(false);
+            Camera.main.GetComponent<AudioListener>().enabled = true;
+        }
+        else
+        {
+            
+            Camera.main.GetComponent<AudioListener>().enabled = false;
+            AudioManager.instance.setAudio(true);
+        }
+    }
     public void OnPressRestart()
     {
         AudioManager.instance.Play("Button Press");

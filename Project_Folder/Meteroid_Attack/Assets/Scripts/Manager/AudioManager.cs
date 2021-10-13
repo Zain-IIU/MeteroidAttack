@@ -10,7 +10,11 @@ public class AudioManager : MonoBehaviour
    	public Sound[] sounds;
    
    	public Sound sound;
-   	
+
+
+    public static bool isMuted = false;
+    
+    
    	void Awake ()
    	{
    		if (instance != null)
@@ -30,13 +34,28 @@ public class AudioManager : MonoBehaviour
    			s.source.loop = s.loop;
    		}
    	}
-   
-   	public void Play (string sound)
+
+
+    public bool wasMuted()
+    {
+        return isMuted;
+    }
+
+    public void setAudio(bool value)
+    {
+        isMuted = value;
+    }
+
+
+    public void Play (string sound)
    	{	
    		
-   		Sound s = Array.Find(sounds, item => item.name == sound);
-   		
-   		s.source.Play();
+            Sound s = Array.Find(sounds, item => item.name == sound);
+
+            s.source.Play();
+      
    	}
+
+ 
    	
 }
