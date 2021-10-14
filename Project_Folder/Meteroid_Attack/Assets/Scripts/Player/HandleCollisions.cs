@@ -45,7 +45,7 @@ public class HandleCollisions : MonoBehaviour
             {
                 AudioManager.instance.Play("Negative");
                 AudioManager.instance.Play("Ship Explode");
-                Destroy(this.gameObject);
+                this.gameObject.SetActive(false);
                 UIManager.instance.EnableRestartButton();
                 GameManager.instance.StopAllOperaions();
             }

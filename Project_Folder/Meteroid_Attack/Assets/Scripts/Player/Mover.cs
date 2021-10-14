@@ -35,4 +35,9 @@ public class Mover : MonoBehaviour
         if(moveSpeed<maxSpeedtoAttain)
             moveSpeed += speedIncrement * Time.deltaTime;
     }
+
+    public void NormalizeBehaviour()
+    {
+        moveSpeed = 1.5f;
+    }
 }

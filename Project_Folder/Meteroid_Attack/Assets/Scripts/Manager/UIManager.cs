@@ -4,12 +4,15 @@ using UnityEngine;
 using DG.Tweening;
 
 using UnityEngine.UI;
-
+using TMPro;
 using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
     [Header("Main Menu")]
+
+    [SerializeField]
+    TextMeshProUGUI highscoreText;
     [SerializeField]
     RectTransform mainmenuBG;
     [SerializeField]
@@ -26,7 +29,8 @@ public class UIManager : MonoBehaviour
     RectTransform restartButton;
     [SerializeField]
     RectTransform controlMenu;
-    
+    [SerializeField]
+    TextMeshProUGUI endGameScoreText;
 
     public bool gameStarted;
 
@@ -49,6 +53,7 @@ public class UIManager : MonoBehaviour
             mainmenuPlanet.DOScale(Vector2.one, 0.4f);
 
             playButton[ShipManager.instance.shipIndex].DOScale(Vector2.one, 0.45f);
+            highscoreText.text = PlayerPrefs.GetInt("HighScore").ToString();
         }
 
         else
@@ -84,12 +89,28 @@ public class UIManager : MonoBehaviour
     }
     public void EnableRestartButton()
     {
-        
+        endGameScoreText.text = ScoreManager.instance.getCurScore().ToString();
         restartButton.DOScale(Vector2.one, 0.25f);
         controlMenu.DOScale(Vector2.zero, 0.25f);
+        if(ScoreManager.instance.getCurScore()>PlayerPrefs.GetInt("HighScore"))
+        {
+            PlayerPrefs.SetInt("HighScore", ScoreManager.instance.getCurScore());
+        }
     }
-   
-    
+
+    public void DisableRestartButton()
+    {
+       // endGameScoreText.text = ScoreManager.instance.getCurScore().ToString();
+        restartButton.DOScale(Vector2.zero, 0.25f);
+        controlMenu.DOScale(Vector2.one, 0.25f);
+        //if (ScoreManager.instance.getCurScore() > PlayerPrefs.GetInt("HighScore"))
+        //{
+        //    PlayerPrefs.SetInt("HighScore", ScoreManager.instance.getCurScore());
+        //}
+    }
+
+
+
     public void OnPressRestart()
     {
         AudioManager.instance.Play("Button Press");

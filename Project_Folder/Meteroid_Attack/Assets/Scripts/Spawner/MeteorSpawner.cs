@@ -21,7 +21,6 @@ public class MeteorSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         InvokeRepeating(nameof(SpawnMeteor), 1f,timeBWSpawn);
         InvokeRepeating(nameof(DecreaseSpawnTime), 4, 5);
     }
@@ -35,6 +34,11 @@ public class MeteorSpawner : MonoBehaviour
     public void StopSpawning()
     {
         CancelInvoke();
+    }
+    public void ReSpawnStart()
+    {
+        InvokeRepeating(nameof(SpawnMeteor), 1f, timeBWSpawn);
+        InvokeRepeating(nameof(DecreaseSpawnTime), 4, 5);
     }
     void DecreaseSpawnTime()
     {

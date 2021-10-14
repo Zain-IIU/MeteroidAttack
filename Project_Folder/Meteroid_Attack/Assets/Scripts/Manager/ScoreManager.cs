@@ -40,4 +40,9 @@ public class ScoreManager : MonoBehaviour
             );
         scoreText.text = curScore.ToString();
     }
+
+    public int getCurScore()
+    {
+        return curScore;
+    }
 }

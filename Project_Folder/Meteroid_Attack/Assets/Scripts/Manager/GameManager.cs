@@ -35,8 +35,28 @@ public class GameManager : MonoBehaviour
         player.enabled = false;
         Spawner.StopSpawning();
     }
+
+    public void StartAllOperations()
+    {
+        if (player)
+        {
+
+            player.enabled = true;
+            player.NormalizeBehaviour();
+            player.gameObject.SetActive(true);
+        }
+            
+        Spawner.ReSpawnStart();
+    }
      public void RestartGame()
     {
         SceneManager.LoadScene(sceneName);  
+    }
+
+
+    public void ContinueGame()
+    {
+        StartAllOperations();
+        UIManager.instance.DisableRestartButton();
     }
 }

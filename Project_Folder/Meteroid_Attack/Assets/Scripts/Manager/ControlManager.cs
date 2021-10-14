@@ -24,7 +24,20 @@ public class ControlManager : MonoBehaviour
     Ease EaseType;
     [SerializeField]
     RectTransform controlButton;
-    
+
+    [SerializeField]
+    Transform allButtonsParent;
+
+
+    [SerializeField]
+    float timeBWchangingControlLayout;
+
+    [SerializeField]
+    float timetoStartChangingLayout;
+    private void Start()
+    {
+        InvokeRepeating(nameof(RearrangeAllButtons), timetoStartChangingLayout, timeBWchangingControlLayout);
+    }
     public void ShootMeteor()
     {
        
@@ -76,6 +89,23 @@ public class ControlManager : MonoBehaviour
         }
 
         return nearestObject;
+    }
+
+    public void RearrangeAllButtons()
+    {
+        int randomChildIndex = Random.Range(0, allButtonsParent.childCount);
+
+        Transform randomChildObject =allButtonsParent.GetChild(randomChildIndex);
+
+        int newChildIndex = Random.Range(0, allButtonsParent.childCount);
+
+        while (newChildIndex==randomChildIndex)
+        {
+            newChildIndex = Random.Range(0, allButtonsParent.childCount);
+        }
+
+        randomChildObject.SetSiblingIndex(newChildIndex);
+
     }
 
 }
