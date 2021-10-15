@@ -56,7 +56,9 @@ public class GameManager : MonoBehaviour
 
     public void ContinueGame()
     {
+        //ads reward to continue playing
         StartAllOperations();
+        ControlManager.instance.DestroyNearbyObjectsforContinuation();
         UIManager.instance.DisableRestartButton();
     }
 }

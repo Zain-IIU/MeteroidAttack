@@ -6,6 +6,7 @@ using DG.Tweening;
 
 public class ControlManager : MonoBehaviour
 {
+    public static ControlManager instance;
     [SerializeField]
     Transform Player;
     [SerializeField]
@@ -34,6 +35,12 @@ public class ControlManager : MonoBehaviour
 
     [SerializeField]
     float timetoStartChangingLayout;
+
+
+    private void Awake()
+    {
+        instance = this;
+    }
     private void Start()
     {
         InvokeRepeating(nameof(RearrangeAllButtons), timetoStartChangingLayout, timeBWchangingControlLayout);
@@ -91,6 +98,14 @@ public class ControlManager : MonoBehaviour
         return nearestObject;
     }
 
+    public void DestroyNearbyObjectsforContinuation()
+    {
+        Collider2D[] nearbyObjects = Physics2D.OverlapCircleAll(raycastPoint.position, 20f, enemyLayer);
+        foreach(Collider2D obj in nearbyObjects)
+        {
+            Destroy(obj.gameObject);
+        }
+    }
     public void RearrangeAllButtons()
     {
         int randomChildIndex = Random.Range(0, allButtonsParent.childCount);
