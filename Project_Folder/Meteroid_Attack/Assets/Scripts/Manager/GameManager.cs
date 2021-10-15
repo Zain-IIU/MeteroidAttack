@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     MeteorSpawner Spawner;
     [SerializeField]
     string sceneName;
+
+    [SerializeField]
+    string mainMenu;
     private void Awake()
     {
         instance = this;
@@ -50,7 +53,13 @@ public class GameManager : MonoBehaviour
     }
      public void RestartGame()
     {
+        AudioManager.instance.Play("Button Press");
         SceneManager.LoadScene(sceneName);  
+    }
+    public void GotoMainMenu()
+    {
+        AudioManager.instance.Play("Button Press");
+        SceneManager.LoadScene(mainMenu);
     }
 
 
