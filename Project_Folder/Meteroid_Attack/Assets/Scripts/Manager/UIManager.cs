@@ -11,9 +11,6 @@ public class UIManager : MonoBehaviour
     public static UIManager instance;
     [Header("Main Menu")]
     [SerializeField]
-    RectTransform splashImage_DeMax;
-    
-    [SerializeField]
     TextMeshProUGUI highscoreText;
     [SerializeField]
     RectTransform mainmenuBG;
@@ -50,8 +47,6 @@ public class UIManager : MonoBehaviour
     {
         if(OnMainMenu)
         {
-            Invoke(nameof(SplashScreen), 2f);
-           
             AudioManager.instance.Play("Space");
             mainmenuLogo.DOScale(Vector2.one, 0.4f);
             mainmenuPlanet.DOScale(Vector2.one, 0.4f);
@@ -66,10 +61,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void SplashScreen()
-    {
-        splashImage_DeMax.DOScale(Vector2.zero, 0.2f);
-    }
+   
     public void OnPressPlay()
     {
         PlayerPrefs.SetInt("ShipIndex", ShipManager.instance.shipIndex);
