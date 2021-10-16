@@ -12,7 +12,10 @@ public class LoadGame : MonoBehaviour
 {
     [SerializeField]
     RectTransform centerPart;
-
+    private void Awake()
+    {
+        PlayerPrefs.SetInt("PlayAudio", 0);
+    }
     // Start is called before the first frame update
     void Start()
     {

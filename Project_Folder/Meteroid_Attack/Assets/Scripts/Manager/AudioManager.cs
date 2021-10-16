@@ -24,7 +24,9 @@ public class AudioManager : MonoBehaviour
    		{
    			instance = this;
    		}
-   
+
+      
+
    		foreach (Sound s in sounds)
    		{
    			s.source = gameObject.AddComponent<AudioSource>();
@@ -35,8 +37,11 @@ public class AudioManager : MonoBehaviour
    			s.source.loop = s.loop;
    		}
         
+
         Sound s1 = Array.Find(sounds, item => item.name == "Space");
         s1.source.playOnAwake = true;
+
+        DisableAudio();
     }
 
     public void Play (string sound)
@@ -48,26 +53,46 @@ public class AudioManager : MonoBehaviour
       
    	}
 
-    public void Mute_UnMute()
-    {
-        if (isMuted)
-        {
-            isMuted = false;
 
+    public void DisableAudio()
+    {
+        if (PlayerPrefs.GetInt("PlayAudio") == 0)
+        {
+  
             foreach (Sound s in sounds)
             {
-                s.source.enabled =!isMuted;
+                s.source.enabled = true;
             }
         }
         else
         {
-            isMuted = true;
+           
             foreach (Sound s in sounds)
             {
-                s.source.enabled = !isMuted;
+                s.source.enabled = false;
             }
         }
-
+    }
+    public void Mute_UnMute()
+    {
+        if (PlayerPrefs.GetInt("PlayAudio")==0)    
+        {
+            Debug.Log("UnMute");
+            PlayerPrefs.SetInt("PlayAudio", 1);          
+            foreach (Sound s in sounds)
+            {
+                s.source.enabled = false;
+            }
+        }
+        else
+        {
+            Debug.Log("Muted");
+            PlayerPrefs.SetInt("PlayAudio", 0);              
+            foreach (Sound s in sounds)
+            {
+                s.source.enabled = true;
+            }
+        }
     }
 
    }

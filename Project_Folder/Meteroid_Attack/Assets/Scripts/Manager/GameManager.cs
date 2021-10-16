@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         AudioManager.instance.Play("Space");
+        AudioManager.instance.DisableAudio();
     }
     public void StartGame()
     {
