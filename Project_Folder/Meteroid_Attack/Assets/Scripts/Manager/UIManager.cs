@@ -100,13 +100,8 @@ public class UIManager : MonoBehaviour
 
     public void DisableRestartButton()
     {
-       // endGameScoreText.text = ScoreManager.instance.getCurScore().ToString();
         restartButton.DOScale(Vector2.zero, 0.25f);
         controlMenu.DOScale(Vector2.one, 0.25f);
-        //if (ScoreManager.instance.getCurScore() > PlayerPrefs.GetInt("HighScore"))
-        //{
-        //    PlayerPrefs.SetInt("HighScore", ScoreManager.instance.getCurScore());
-        //}
     }
 
 

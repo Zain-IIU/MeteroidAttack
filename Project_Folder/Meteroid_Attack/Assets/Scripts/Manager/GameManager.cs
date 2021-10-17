@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     {
         AudioManager.instance.Play("Space");
         AudioManager.instance.DisableAudio();
+        
     }
     public void StartGame()
     {
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
 
     public void StartAllOperations()
     {
+      
         if (player)
         {
 
@@ -67,6 +69,11 @@ public class GameManager : MonoBehaviour
     public void ContinueGame()
     {
         //ads reward to continue playing
+        AdsManager.instance.UserChoseToWatchAd();
+       
+    }
+    public void RewardPlayer()
+    {
         StartAllOperations();
         ControlManager.instance.DestroyNearbyObjectsforContinuation();
         UIManager.instance.DisableRestartButton();
