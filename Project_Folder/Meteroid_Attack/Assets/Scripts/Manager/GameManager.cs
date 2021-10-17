@@ -16,6 +16,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     string mainMenu;
+
+    bool hasContinued = false;
+    [SerializeField]
+    GameObject continueButton;
     private void Awake()
     {
         instance = this;
@@ -25,7 +29,8 @@ public class GameManager : MonoBehaviour
     {
         AudioManager.instance.Play("Space");
         AudioManager.instance.DisableAudio();
-        
+        AdsManager.instance.RequestInterstitial();
+
     }
     public void StartGame()
     {
@@ -70,7 +75,17 @@ public class GameManager : MonoBehaviour
     {
         //ads reward to continue playing
         AdsManager.instance.UserChoseToWatchAd();
+        if(!hasContinued)
+        {
+            hasContinued = true;
+            ActivateContinueButton(!hasContinued);
+        }
        
+    }
+
+    public void ActivateContinueButton(bool value)
+    {
+        continueButton.SetActive(value);
     }
     public void RewardPlayer()
     {

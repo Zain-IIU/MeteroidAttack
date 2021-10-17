@@ -30,6 +30,8 @@ public class UIManager : MonoBehaviour
     RectTransform controlMenu;
     [SerializeField]
     TextMeshProUGUI endGameScoreText;
+    [SerializeField]
+
 
     public bool gameStarted;
 
@@ -45,14 +47,18 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        
+
         if(OnMainMenu)
         {
+            
             AudioManager.instance.Play("Space");
             mainmenuLogo.DOScale(Vector2.one, 0.4f);
             mainmenuPlanet.DOScale(Vector2.one, 0.4f);
 
             playButton[ShipManager.instance.shipIndex].DOScale(Vector2.one, 0.45f);
             highscoreText.text = PlayerPrefs.GetInt("HighScore").ToString();
+            
         }
 
         else

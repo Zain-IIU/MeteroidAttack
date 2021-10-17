@@ -762,7 +762,7 @@ RectTransform:
   - {fileID: 1210056025}
   - {fileID: 249932788}
   m_Father: {fileID: 704352006}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1748,7 +1748,6 @@ RectTransform:
   - {fileID: 993823368}
   - {fileID: 1049582391}
   - {fileID: 1563935025}
-  - {fileID: 721735977}
   - {fileID: 278822187}
   m_Father: {fileID: 488489921}
   m_RootOrder: 0
@@ -1801,12 +1800,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 704352006}
-  m_RootOrder: 5
+  m_Father: {fileID: 1687578676}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 99.99999}
+  m_AnchoredPosition: {x: 0, y: 2}
   m_SizeDelta: {x: 289.2336, y: 90.5608}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &721735978
@@ -1831,8 +1830,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Ads not Available '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 352a075aeb4626c4f8636ed47cf4da86, type: 2}
-  m_sharedMaterial: {fileID: 5305903789494270713, guid: 352a075aeb4626c4f8636ed47cf4da86, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3585,6 +3584,7 @@ MonoBehaviour:
   Spawner: {fileID: 658386640}
   sceneName: GamePlay
   mainMenu: MainMenu
+  continueButton: {fileID: 1965021592}
 --- !u!1 &1563935024
 GameObject:
   m_ObjectHideFlags: 0
@@ -4009,7 +4009,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1687578676
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4020,14 +4020,15 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 721735977}
   m_Father: {fileID: 704352006}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 98}
-  m_SizeDelta: {x: 289.23, y: 89.1839}
+  m_SizeDelta: {x: 319.9031, y: 121.3176}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1687578677
 MonoBehaviour:

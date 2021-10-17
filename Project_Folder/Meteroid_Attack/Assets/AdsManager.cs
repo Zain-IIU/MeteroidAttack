@@ -1,6 +1,7 @@
 using UnityEngine;
 using GoogleMobileAds.Api;
 using System;
+using Random = UnityEngine.Random;
 
 public class AdsManager : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class AdsManager : MonoBehaviour
         MobileAds.Initialize(initStatus => { });
         this.rewardedAd = new RewardedAd(rewarded_Add);
         RequestRewardAd();
+       
+
         // Called when an ad request has successfully loaded.
         this.rewardedAd.OnAdLoaded += HandleRewardedAdLoaded;
         // Called when an ad request failed to load.
@@ -41,7 +44,25 @@ public class AdsManager : MonoBehaviour
         // Load the rewarded ad with the request.
         this.rewardedAd.LoadAd(request);
     }
+    public void RequestInterstitial()
+    {
 
+        string adUnitId = "ca-app-pub-3940256099942544/1033173712";
+        if (this.interstitial != null)
+            this.interstitial.Destroy();
+
+        // Initialize an InterstitialAd.
+        this.interstitial = new InterstitialAd(adUnitId);
+
+        // Create an empty ad request.
+        AdRequest request = new AdRequest.Builder().Build();
+
+        // Load the interstitial with the request.
+
+        this.interstitial.LoadAd(request);
+
+
+    }
 
     public void HandleRewardedAdLoaded(object sender, EventArgs args)
     {
@@ -50,6 +71,7 @@ public class AdsManager : MonoBehaviour
 
     public void HandleRewardedAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
     {
+        GameManager.instance.ActivateContinueButton(false);
         MonoBehaviour.print(
             "HandleRewardedAdFailedToLoad event received with message: "
                              + args.ToString());
@@ -62,6 +84,7 @@ public class AdsManager : MonoBehaviour
 
     public void HandleRewardedAdFailedToShow(object sender, AdErrorEventArgs args)
     {
+
         MonoBehaviour.print(
             "HandleRewardedAdFailedToShow event received with message: "
                             );
@@ -89,6 +112,16 @@ public class AdsManager : MonoBehaviour
         else
         {
             Debug.Log("Cant show ads");
+        }
+    }
+
+    public void onGameStartLoadInterstitial()
+    {
+        if (this.interstitial.IsLoaded())
+        {
+           if(Random.Range(0,4)==0)
+                this.interstitial.Show();
+                
         }
     }
 }
