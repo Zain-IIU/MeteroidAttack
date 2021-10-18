@@ -19,8 +19,6 @@ public class LoadGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        centerPart.DOLocalRotate(new Vector3(0,0,0), 0.75f);
-        centerPart.DOScale(Vector2.one, 0.75f);
         Invoke(nameof(LoadintoGame), 1.5f);
 
         //PlayerPrefs.SetInt("HighScore", 0);

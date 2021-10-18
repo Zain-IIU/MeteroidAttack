@@ -31,9 +31,9 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI endGameScoreText;
     [SerializeField]
-
-
     public bool gameStarted;
+    [SerializeField]
+    RectTransform noAdsPanel;
 
 
     public  bool OnMainMenu=true;
@@ -122,5 +122,14 @@ public class UIManager : MonoBehaviour
             GameManager.instance.RestartGame();
 
         });
+    }
+
+    public void ShowNoAdsPanel()
+    {
+        noAdsPanel.DOScale(Vector2.one, 0.25f);
+    }
+    public void HideAdsPanel()
+    {
+        noAdsPanel.DOScale(Vector2.zero, 0.25f);
     }
 }
