@@ -41,9 +41,11 @@ public class GameManager : MonoBehaviour
     
     public void StopAllOperaions()
     {
-        if(player)
+        AdsManager.instance.onGameStartLoadInterstitial();
+        if (player)
         player.enabled = false;
         Spawner.StopSpawning();
+        ControlManager.instance.enabled = false;
     }
 
     public void StartAllOperations()
@@ -51,7 +53,7 @@ public class GameManager : MonoBehaviour
       
         if (player)
         {
-
+            ControlManager.instance.enabled = true;
             player.enabled = true;
             player.NormalizeBehaviour();
             player.gameObject.SetActive(true);

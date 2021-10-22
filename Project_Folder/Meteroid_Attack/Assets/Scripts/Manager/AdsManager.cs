@@ -8,8 +8,8 @@ public class AdsManager : MonoBehaviour
     public static AdsManager instance;
     string AppID = "ca-app-pub-6536263809755106~2766678922";
 
-    string interstitialAdd = "ca-app-pub-6536263809755106/9582318969";
-    string rewarded_Add = "ca-app-pub-3940256099942544/8691691433";
+    string interstitialAdd = "ca-app-pub-8824047777559558/8900912242";
+    string rewarded_Add = "ca-app-pub-8824047777559558/1545166401";
 
     InterstitialAd interstitial;
     RewardedAd rewardedAd;
@@ -23,7 +23,8 @@ public class AdsManager : MonoBehaviour
         this.rewardedAd = new RewardedAd(rewarded_Add);
         RequestRewardAd();
        
-
+        //event handler
+       
         // Called when an ad request has successfully loaded.
         this.rewardedAd.OnAdLoaded += HandleRewardedAdLoaded;
         // Called when an ad request failed to load.
@@ -36,6 +37,7 @@ public class AdsManager : MonoBehaviour
         this.rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;
         // Called when the ad is closed.
         this.rewardedAd.OnAdClosed += HandleRewardedAdClosed;
+
     }
     #region Callbacks
     public void RequestRewardAd()
@@ -45,14 +47,12 @@ public class AdsManager : MonoBehaviour
         this.rewardedAd.LoadAd(request);
     }
     public void RequestInterstitial()
-    {
-
-        string adUnitId = "ca-app-pub-3940256099942544/1033173712";
+    { 
         if (this.interstitial != null)
             this.interstitial.Destroy();
 
         // Initialize an InterstitialAd.
-        this.interstitial = new InterstitialAd(adUnitId);
+        this.interstitial = new InterstitialAd(interstitialAdd);
 
         // Create an empty ad request.
         AdRequest request = new AdRequest.Builder().Build();
@@ -71,7 +71,6 @@ public class AdsManager : MonoBehaviour
 
     public void HandleRewardedAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
     {
-        GameManager.instance.ActivateContinueButton(false);
         MonoBehaviour.print(
             "HandleRewardedAdFailedToLoad event received with message: "
                              + args.ToString());
@@ -84,7 +83,7 @@ public class AdsManager : MonoBehaviour
 
     public void HandleRewardedAdFailedToShow(object sender, AdErrorEventArgs args)
     {
-
+        UIManager.instance.ShowNoAdsPanel();
         MonoBehaviour.print(
             "HandleRewardedAdFailedToShow event received with message: "
                             );
@@ -119,7 +118,7 @@ public class AdsManager : MonoBehaviour
     {
         if (this.interstitial.IsLoaded())
         {
-          if(Random.Range(0,4)==0)
+          //if(Random.Range(0,4)==0)
                 this.interstitial.Show();
                 
         }

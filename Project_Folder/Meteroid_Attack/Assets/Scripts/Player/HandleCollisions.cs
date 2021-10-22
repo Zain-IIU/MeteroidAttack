@@ -35,7 +35,7 @@ public class HandleCollisions : MonoBehaviour
                     AudioManager.instance.Play("Negative");
                     UIManager.instance.EnableRestartButton();
                     GameManager.instance.StopAllOperaions();
-                    AdsManager.instance.onGameStartLoadInterstitial();
+                   
                 }
                 Destroy(collision.gameObject);
                 
@@ -49,7 +49,7 @@ public class HandleCollisions : MonoBehaviour
                 UIManager.instance.EnableRestartButton();
                 GameManager.instance.StopAllOperaions();
 
-                AdsManager.instance.onGameStartLoadInterstitial();
+               
             }
 
 
@@ -63,7 +63,7 @@ public class HandleCollisions : MonoBehaviour
             GameManager.instance.StopAllOperaions();
             Instantiate(VFXPrefab, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
-            AdsManager.instance.onGameStartLoadInterstitial();
+            
         }
 
        

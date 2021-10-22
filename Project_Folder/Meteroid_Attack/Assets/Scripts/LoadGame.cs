@@ -10,8 +10,7 @@ using UnityEngine.SceneManagement;
 
 public class LoadGame : MonoBehaviour
 {
-    [SerializeField]
-    RectTransform centerPart;
+    
     private void Awake()
     {
         PlayerPrefs.SetInt("PlayAudio", 0);
