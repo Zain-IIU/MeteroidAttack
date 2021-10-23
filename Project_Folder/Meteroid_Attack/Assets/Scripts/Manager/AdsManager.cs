@@ -118,7 +118,7 @@ public class AdsManager : MonoBehaviour
     {
         if (this.interstitial.IsLoaded())
         {
-          //if(Random.Range(0,4)==0)
+          if(Random.Range(0,4)==0)
                 this.interstitial.Show();
                 
         }
